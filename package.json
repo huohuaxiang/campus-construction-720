@@ -1,0 +1,12 @@
+{
+  "name": "campus-construction-720",
+  "version": "1.0.0",
+  "private": true,
+  "description": "虚拟职业技术学院新校区 720 天施工全过程实时 3D",
+  "scripts": {
+    "shots": "node screenshots.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.0.0"
+  }
+}

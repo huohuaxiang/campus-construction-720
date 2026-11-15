@@ -1,0 +1,29 @@
+name: Import campus build
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-campus-build.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download build
+        run: curl -fsSL --retry 3 -o "校园建造720天.html" "https://aka.doubaocdn.com/s/YzYstEWU5r"
+      - name: Commit build
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "校园建造720天.html"
+          if git diff --cached --quiet; then
+            echo "No change"
+          else
+            git commit -m "Add 校园建造720天.html"
+            git push
+          fi
